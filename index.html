@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyce ABC Adventure</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    body { background-color: #e2e8f0; color: #1e293b; font-family: system-ui, sans-serif; }
+    .joyce-card { background: #ffffff; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+    .joyce-btn { background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 0.75rem; transition: all 0.2s; padding: 0.8rem; text-align: center; display: block; font-size: 0.9rem; font-weight: 700; color: #334155; }
+    .joyce-btn:hover { background: #e0f2fe; border-color: #38bdf8; transform: translateY(-2px); }
+</style>
+</head>
+<body class="p-6 md:p-10">
+
+<div class="max-w-2xl mx-auto">
+    <!-- 標題區塊：LOGO + 標題 -->
+    <div class="flex items-center gap-4 mb-8 justify-center">
+        <img src="Untitled design.png" alt="Logo" class="w-16 h-16 rounded-full border-2 border-white shadow-md">
+        <h1 class="text-3xl font-black text-slate-900">Joyce ABC Adventure</h1>
+    </div>
+
+    <!-- 1. Alphabet -->
+    <div class="joyce-card">
+        <h3 class="font-bold text-lg mb-4 text-slate-800">🔤 Alphabet</h3>
+        <div class="grid grid-cols-3 gap-3">
+            <a href="#" class="joyce-btn">小班</a>
+            <a href="#" class="joyce-btn">中班</a>
+            <a href="#" class="joyce-btn">大班</a>
+        </div>
+    </div>
+
+    <!-- 2. Phonics and Sight Words -->
+    <div class="joyce-card">
+        <h3 class="font-bold text-lg mb-4 text-slate-800">📚 Phonics & Sight Words</h3>
+        <div class="grid grid-cols-4 gap-3">
+            <a href="#" class="joyce-btn">小班</a>
+            <a href="#" class="joyce-btn">中 A</a>
+            <a href="#" class="joyce-btn">中 B</a>
+            <a href="#" class="joyce-btn">大班</a>
+        </div>
+    </div>
+
+    <!-- 3. David 互動基地 -->
+    <div class="joyce-card">
+        <h3 class="font-bold text-lg mb-4 text-slate-800">🚀 David 互動基地</h3>
+        <div class="grid grid-cols-3 gap-3">
+            <a href="#" class="joyce-btn">小班</a>
+            <a href="#" class="joyce-btn">中班</a>
+            <a href="#" class="joyce-btn">大班</a>
+        </div>
+    </div>
+
+    <!-- 4. Review Games -->
+    <div class="joyce-card border-2 border-dashed border-slate-300 bg-slate-50">
+        <h3 class="font-bold text-lg mb-4 text-slate-500 italic">🔄 Review Games</h3>
+        <div class="h-16 flex items-center justify-center text-slate-400 text-sm">
+            ( 即將開放 )
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
