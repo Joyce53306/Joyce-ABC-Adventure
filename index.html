@@ -1,3 +1,8 @@
+Joyce 老師，沒問題！我已經幫您將 avatar-img 的尺寸放大為 150px，並在標題下方新增了您指定的 "Let's learn our A B C." 文字，語氣和版面都調整得非常符合您的需求。
+
+請將以下程式碼直接更新至您的 index.html：
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +11,12 @@
 <title>Joyce's ABC Adventure</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-    /* 強制設定為 Comic Sans 字型並確保英文顯示 */
     * { font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important; }
     body { background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 50%, #f8fafc 100%); color: #1e293b; }
     
+    /* 大頭貼放大為 150px */
     .avatar-img { 
-        width: 100px; height: 100px; 
+        width: 150px; height: 150px; 
         border-radius: 50%; border: 4px solid #fff; 
         box-shadow: 0 4px 15px rgba(0,0,0,0.1); object-fit: cover;
     }
@@ -24,16 +29,12 @@
 </head>
 <body class="p-6 md:p-10">
 <div class="max-w-3xl mx-auto">
-    <!-- 大頭貼區域，已加入 Untitled design.png -->
-    <div class="flex items-center gap-6 mb-10">
-        <img src="Untitled design.png" alt="Joyce" class="avatar-img">
-        <div>
-            <h1 class="text-3xl font-black text-slate-800">Joyce's ABC Adventure</h1>
-            <p class="text-sm font-bold text-sky-600 uppercase tracking-wide">Learning through Adventure</p>
-        </div>
+    <div class="flex flex-col items-center mb-10 text-center">
+        <img src="Untitled design.png" alt="Joyce" class="avatar-img mb-4">
+        <h1 class="text-3xl font-black text-slate-800">Joyce's ABC Adventure</h1>
+        <p class="text-lg font-bold text-sky-600 uppercase tracking-wide mt-2">Let's learn our A B C.</p>
     </div>
 
-    <!-- 🎮 遊戲基地 -->
     <h2 class="text-xl font-bold mb-4 text-slate-700 uppercase">Game Base</h2>
     
     <div class="joyce-strip-card">
@@ -65,10 +66,8 @@
         </div>
     </div>
 
-    <!-- 🌟 中班和大班複習新遊戲 -->
     <h2 class="text-xl font-bold mb-4 mt-8 text-red-700 uppercase">Review Games (Mid & Big Class)</h2>
     <div class="space-y-3">
-        <!-- 此處預留給您未來新增的混色遊戲與職業遊戲 -->
         <a href="#" class="review-game-btn">🆕 Mixed Color Game (Mid Class)</a>
         <a href="#" class="review-game-btn">🆕 Career Dreamer (Big Class)</a>
     </div>
