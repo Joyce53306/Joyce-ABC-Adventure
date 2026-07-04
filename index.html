@@ -11,14 +11,15 @@
         
         .avatar-img { width: 180px; height: 180px; border-radius: 50%; border: 8px solid #78350f; object-fit: cover; }
         
-        /* 統一的白色底、淺灰邊框卡片風格 */
+        /* 統一的白色底卡片 */
         .joyce-strip-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         
+        /* 一般按鈕 */
         .joyce-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1rem; padding: 1rem; text-align: center; display: block; font-weight: 700; color: #334155; transition: 0.2s; }
         .joyce-btn:hover { background: #f0f9ff; border-color: #7dd3fc; }
         
-        /* Big Class 強調按鈕風格 */
-        .big-class-special { border: 2px solid #f59e0b; background-color: #fffbeb; }
+        /* 嚴格統一的 Big Class 風格 */
+        .big-class-special { border: 2px solid #f59e0b !important; background-color: #fffbeb !important; color: #92400e !important; }
     </style>
 </head>
 <body class="p-6 md:p-10">
@@ -31,7 +32,6 @@
 
     <!-- 1. Game Base -->
     <h2 class="text-xl font-bold mb-4 uppercase">Game Base</h2>
-    
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-sky-700">Alphabet</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -42,11 +42,13 @@
         </div>
     </div>
 
-    <!-- Voc Review：完全對齊 Alphabet 的視覺設定 -->
+    <!-- 2. Voc Review -->
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-sky-700">Voc Review</h3>
         <div class="grid grid-cols-1 gap-3">
-            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn">🚀 David K3 Voc Review</a>
+            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn big-class-special">
+                🚀 Big Class Voc Review
+            </a>
         </div>
     </div>
 
@@ -67,7 +69,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <a href="https://joyce53306.github.io/Small-Class-Sentences-Practicess/" class="joyce-btn">✏️ Small Class</a>
             <a href="https://joyce53306.github.io/mid-class-english/" class="joyce-btn">✏️ Mid Class</a>
-            <a href="https://joyce53306.github.io/big-class-english/" class="joyce-btn big-class-special">✏️ Big Class</a>
+            <a href="https://joyce53306.btn big-class-special">✏️ Big Class</a>
         </div>
     </div>
 </div>
