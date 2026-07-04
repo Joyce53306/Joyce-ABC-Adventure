@@ -17,7 +17,8 @@
             object-fit: cover;
         }
 
-        .joyce-strip-card { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border: 2px solid rgba(226,232,240,0.8); border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+        /* 統一的白色底、帶圓角的長方形卡片 */
+        .joyce-strip-card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
         
         .joyce-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1rem; transition: all 0.2s; padding: 1rem; text-align: center; display: block; font-size: 1rem; font-weight: 700; text-decoration: none; color: #334155; }
         .joyce-btn:hover { background: #f0f9ff; border-color: #7dd3fc; transform: scale(1.02); }
@@ -27,7 +28,6 @@
 </head>
 <body class="p-6 md:p-10">
 <div class="max-w-3xl mx-auto">
-    <!-- 頭像區 -->
     <div class="flex flex-col items-center mb-10 text-center">
         <img src="Untitled design.png" alt="Joyce" class="avatar-img mb-4">
         <h1 class="text-3xl font-black text-slate-800">Joyce's ABC Adventure</h1>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <!-- 2. Voc Review (整合進長方形卡片中) -->
+    <!-- 2. Voc Review 專區 (調整為白色底長方形，標題大小寫混合) -->
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-orange-600">Voc Review</h3>
         <div class="grid grid-cols-1 gap-3">
