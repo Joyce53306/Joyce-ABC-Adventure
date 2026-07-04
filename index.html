@@ -19,25 +19,22 @@
 
         .joyce-strip-card { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border: 2px solid rgba(226,232,240,0.8); border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
         
-        /* 統一按鈕樣式 */
         .joyce-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1rem; transition: all 0.2s; padding: 1rem; text-align: center; display: block; font-size: 1rem; font-weight: 700; text-decoration: none; color: #334155; }
         .joyce-btn:hover { background: #f0f9ff; border-color: #7dd3fc; transform: scale(1.02); }
-
-        /* Voc Review 專用樣式：與 Alphabet 同樣白色底 + 黃邊 */
-        .voc-btn { background: #ffffff; border: 2px solid #fbbf24; border-radius: 1rem; padding: 1.2rem; font-weight: 700; color: #334155; text-align: center; display: block; font-size: 1.1rem; text-decoration: none; }
-        .voc-btn:hover { background: #fffbeb; border-color: #f59e0b; transform: scale(1.02); }
 
         .big-class-special { border: 3px solid #ffffff; outline: 4px solid #f59e0b; background-color: #fffbeb; }
     </style>
 </head>
 <body class="p-6 md:p-10">
 <div class="max-w-3xl mx-auto">
+    <!-- 頭像區 -->
     <div class="flex flex-col items-center mb-10 text-center">
         <img src="Untitled design.png" alt="Joyce" class="avatar-img mb-4">
         <h1 class="text-3xl font-black text-slate-800">Joyce's ABC Adventure</h1>
         <p class="text-lg font-bold text-sky-600 uppercase tracking-wide mt-2">Let's learn our A B C.</p>
     </div>
 
+    <!-- 1. Game Base -->
     <h2 class="text-xl font-bold mb-4 text-slate-800 uppercase">Game Base</h2>
     
     <div class="joyce-strip-card">
@@ -50,16 +47,17 @@
         </div>
     </div>
 
-    <!-- 調整後：標題大小寫混合，按鈕白色底 -->
-    <h2 class="text-xl font-bold mb-4 text-slate-800 uppercase">Voc Review</h2>
+    <!-- 2. Voc Review (整合進長方形卡片中) -->
     <div class="joyce-strip-card">
+        <h3 class="font-bold text-xl mb-4 text-orange-600">Voc Review</h3>
         <div class="grid grid-cols-1 gap-3">
-            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="voc-btn">
+            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn">
                 🚀 David K3 Voc Review
             </a>
         </div>
     </div>
 
+    <!-- 3. Phonics & Sight Words -->
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-amber-700">Phonics & Sight Words</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -70,6 +68,7 @@
         </div>
     </div>
 
+    <!-- 4. David's Adventure -->
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-emerald-700">David's Adventure</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
