@@ -9,22 +9,26 @@
         * { font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important; }
         body { background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 50%, #f8fafc 100%); color: #1e293b; }
         
+        /* 1. 放大且咖啡色框的人臉 */
         .avatar-img { 
-            width: 150px; height: 150px; 
+            width: 180px; height: 180px; 
             border-radius: 50%; 
-            border: 6px solid #ffffff; 
-            box-shadow: 0 0 0 3px #38bdf8; 
+            border: 8px solid #78350f; /* 咖啡色粗框 */
+            box-shadow: 0 0 0 4px #d6d3d1; 
             object-fit: cover;
         }
 
         .joyce-strip-card { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border: 2px solid rgba(226,232,240,0.8); border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
         
+        /* Voc Review 專屬樣式：淡灰外框 + 黃色內框 */
+        .voc-outer-card { background: #f3f4f6; border: 2px solid #e5e7eb; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .voc-inner-btn { background: #fffbeb; border: 3px solid #f59e0b; border-radius: 1rem; padding: 1.2rem; font-weight: 900; color: #b45309; text-align: center; display: block; font-size: 1.5rem; text-decoration: none; }
+
+        /* 一般按鈕 */
         .joyce-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1rem; transition: all 0.2s; padding: 1rem; text-align: center; display: block; font-size: 1rem; font-weight: 700; text-decoration: none; color: #334155; }
         .joyce-btn:hover { background: #f0f9ff; border-color: #7dd3fc; transform: scale(1.02); }
 
         .big-class-special { border: 3px solid #ffffff; outline: 4px solid #f59e0b; background-color: #fffbeb; }
-        
-        .voc-special { border: 3px solid #ffffff; outline: 4px solid #ea580c; background-color: #fff7ed; color: #9a3412; }
     </style>
 </head>
 <body class="p-6 md:p-10">
@@ -35,17 +39,7 @@
         <p class="text-lg font-bold text-sky-600 uppercase tracking-wide mt-2">Let's learn our A B C.</p>
     </div>
 
-    <h2 class="text-xl font-bold mb-4 text-orange-600 uppercase">Voc Review Center</h2>
-    <div class="joyce-strip-card border-orange-200">
-        <div class="grid grid-cols-1 gap-3">
-            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn voc-special">
-                🚀 David K3 Voc Review
-            </a>
-        </div>
-    </div>
-    
-    <h2 class="text-xl font-bold mb-4 mt-4 text-slate-700 uppercase">Game Base</h2>
-    
+    <h2 class="text-xl font-bold mb-4 text-slate-800 uppercase">Game Base</h2>
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-sky-700">Alphabet</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -53,6 +47,15 @@
             <a href="https://joyce53306.github.io/alphabet-pair-match/" class="joyce-btn">✏️ Mid A</a>
             <a href="https://joyce53306.github.io/phonics-hero/" class="joyce-btn">✏️ Mid B</a>
             <a href="https://joyce53306.github.io/phonics-level-up/" class="joyce-btn big-class-special">✏️ Big Class</a>
+        </div>
+    </div>
+
+    <h2 class="text-xl font-bold mb-4 text-slate-800 uppercase">Voc Review</h2>
+    <div class="voc-outer-card">
+        <div class="grid grid-cols-1 gap-3">
+            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="voc-inner-btn">
+                🚀 David K3 Voc Review
+            </a>
         </div>
     </div>
 
