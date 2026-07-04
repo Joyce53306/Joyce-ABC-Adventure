@@ -12,18 +12,23 @@
         /* 咖啡色粗框人臉 */
         .avatar-img { width: 180px; height: 180px; border-radius: 50%; border: 8px solid #78350f; object-fit: cover; }
         
-        /* 白色底、帶圓角、淺灰邊框的長方形卡片 */
+        /* 一般白色卡片 */
         .joyce-strip-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         
-        /* 按鈕風格 */
+        /* Voc Review 專屬卡片：深黃邊框 + 奶黃底色 (完全對齊 Big Class 風格) */
+        .voc-special-card { background: #fffbeb; border: 3px solid #f59e0b; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+        
+        /* 一般按鈕 */
         .joyce-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1rem; padding: 1rem; text-align: center; display: block; font-weight: 700; color: #334155; transition: 0.2s; }
         .joyce-btn:hover { background: #f0f9ff; border-color: #7dd3fc; }
+        
+        /* Big Class 強調按鈕風格 */
         .big-class-special { border: 2px solid #f59e0b; background-color: #fffbeb; }
     </style>
 </head>
 <body class="p-6 md:p-10">
 <div class="max-w-3xl mx-auto">
-    <!-- 頭像 -->
+    <!-- Header -->
     <div class="flex flex-col items-center mb-10 text-center">
         <img src="Untitled design.png" alt="Joyce" class="avatar-img mb-4">
         <h1 class="text-3xl font-black">Joyce's ABC Adventure</h1>
@@ -31,7 +36,6 @@
 
     <!-- 1. Game Base -->
     <h2 class="text-xl font-bold mb-4 uppercase">Game Base</h2>
-    
     <div class="joyce-strip-card">
         <h3 class="font-bold text-xl mb-4 text-sky-700">Alphabet</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -42,11 +46,11 @@
         </div>
     </div>
 
-    <!-- 2. Voc Review (白色長方框，大小寫正確) -->
-    <div class="joyce-strip-card">
-        <h3 class="font-bold text-xl mb-4 text-orange-600">Voc Review</h3>
+    <!-- 2. Voc Review (這裡已改成奶黃底+深黃邊框) -->
+    <div class="voc-special-card">
+        <h3 class="font-bold text-xl mb-4 text-amber-800">Voc Review</h3>
         <div class="grid grid-cols-1 gap-3">
-            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn">
+            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn big-class-special">
                 ✏️ David K3 Voc Review
             </a>
         </div>
