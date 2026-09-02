@@ -1,732 +1,117 @@
 <!--
-  Sight Word Sentence Builder
+  Joyce's ABC Adventure — Game Hub
   © Joyce53306
   Unauthorized copying or redistribution without credit is not permitted.
-  Build signature: JOYCE53306-SWFG-v1
+  Build signature: JOYCE53306-HUB-v1
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="author" content="Joyce53306">
-<meta name="copyright" content="© Joyce53306">
-<title>Sight Words Sentences (Big)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#FFF8ED;
-    --sky:#5FB8D6;
-    --sky-dark:#3A93B0;
-    --coral:#FF8C69;
-    --leaf:#7CB86B;
-    --ink:#3A3226;
-    --slot-empty:#E8DCC8;
-  }
-  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  html,body{
-    margin:0; padding:0; height:100%;
-    background:var(--cream);
-    font-family:'Andika', sans-serif;
-    color:var(--ink);
-    overscroll-behavior:none;
-  }
-  body{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    min-height:100vh;
-    padding:20px 16px 40px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Joyce53306">
+    <meta name="copyright" content="© Joyce53306">
+    <title>Joyce's ABC Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important; }
+        body { background: #f1f5f9; color: #1e293b; }
+        
+        .avatar-img { width: 180px; height: 180px; border-radius: 50%; border: 8px solid #78350f; object-fit: cover; }
+        
+        /* 統一的白色底卡片 */
+        .joyce-strip-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        
+        /* 一般按鈕 */
+        .joyce-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 1rem; padding: 1rem; text-align: center; display: block; font-weight: 700; color: #334155; transition: 0.2s; }
+        .joyce-btn:hover { background: #f0f9ff; border-color: #7dd3fc; }
+        
+        /* 嚴格統一的 Big Class 風格 */
+        .big-class-special { border: 2px solid #f59e0b !important; background-color: #fffbeb !important; color: #92400e !important; }
+        /* 粉紅色邊框標示 */
+        .pink-special { border: 2px solid #ec4899 !important; background-color: #fdf2f8 !important; color: #9d174d !important; }
 
-  /* ---- Start screen ---- */
-  #startScreen{
-    width:100%;
-    max-width:480px;
-    text-align:center;
-    margin-top:10vh;
-  }
-  #startScreen h1{
-    font-size:28px;
-    color:var(--coral);
-    margin-bottom:6px;
-  }
-  #startScreen p{
-    font-size:16px;
-    color:#8A7B5C;
-    margin-bottom:30px;
-  }
-  .level-btn{
-    display:block;
-    width:100%;
-    font-family:'Andika', sans-serif;
-    font-size:22px;
-    font-weight:700;
-    color:#fff;
-    border:none;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:16px;
-    cursor:pointer;
-  }
-  .level-btn.middle{ background:var(--sky); box-shadow:0 5px 0 var(--sky-dark); }
-  .level-btn.big{ background:var(--coral); box-shadow:0 5px 0 #D96A48; }
-  .level-btn:active{ transform:translateY(4px); box-shadow:none; }
-
-  /* ---- Top bar ---- */
-  .topbar{
-    width:100%;
-    max-width:520px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:18px;
-    display:none;
-  }
-  .progress{
-    font-size:15px;
-    font-weight:700;
-    color:var(--sky-dark);
-    background:#fff;
-    padding:6px 14px;
-    border-radius:999px;
-    border:2px solid var(--sky);
-  }
-  .title{
-    font-size:15px;
-    font-weight:700;
-    color:var(--coral);
-    letter-spacing:0.5px;
-  }
-
-  #gameScreen{ display:none; width:100%; max-width:520px; flex-direction:column; align-items:center; }
-
-  .card{
-    width:100%;
-    background:#ffffff;
-    border-radius:28px;
-    padding:32px 22px 26px;
-    box-shadow:0 10px 0 rgba(58,50,38,0.08);
-    border:3px solid #F0E6D2;
-    text-align:center;
-    position:relative;
-  }
-
-  .listen-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:var(--sky);
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:12px 22px;
-    font-family:'Andika', sans-serif;
-    font-size:17px;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 4px 0 var(--sky-dark);
-    transition:transform 0.08s;
-  }
-  .listen-btn:active{ transform:translateY(3px); box-shadow:0 1px 0 var(--sky-dark); }
-  .listen-btn svg{ width:20px; height:20px; }
-
-  .sentence{
-    margin:30px 0 8px;
-    font-size:27px;
-    line-height:1.8;
-    font-weight:700;
-    color:var(--ink);
-  }
-  @media (min-width:400px){
-    .sentence{ font-size:30px; }
-  }
-
-  .slot{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:4.2em;
-    padding:2px 10px;
-    margin:0 4px;
-    vertical-align:middle;
-    border-radius:14px;
-    border:3px dashed #C9B98F;
-    background:var(--slot-empty);
-    font-size:1em;
-    line-height:1;
-    font-weight:700;
-    color:transparent;
-    transition:background 0.15s, border-color 0.15s, transform 0.15s;
-  }
-  .slot.filled{
-    border-style:solid;
-    border-color:var(--leaf);
-    background:#EAF6E4;
-    color:var(--ink);
-  }
-  .slot.wrong-flash{
-    border-color:var(--coral);
-    background:#FFE9E1;
-    animation:shake 0.35s;
-  }
-  .slot.hover-target{
-    background:#FFF3D6;
-    border-color:var(--coral);
-    transform:scale(1.05);
-  }
-  @keyframes shake{
-    0%,100%{ transform:translateX(0); }
-    25%{ transform:translateX(-6px); }
-    75%{ transform:translateX(6px); }
-  }
-
-  .options{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    margin-top:34px;
-    flex-wrap:wrap;
-  }
-  .chip{
-    touch-action:none;
-    user-select:none;
-    -webkit-user-select:none;
-    font-family:'Andika', sans-serif;
-    font-size:23px;
-    font-weight:700;
-    color:var(--ink);
-    background:#FFF3D6;
-    border:3px solid #E8C875;
-    border-radius:16px;
-    padding:12px 20px;
-    cursor:grab;
-    box-shadow:0 4px 0 #D9AF52;
-    position:relative;
-  }
-  .chip.dragging{
-    cursor:grabbing;
-    z-index:50;
-    box-shadow:0 8px 18px rgba(0,0,0,0.18);
-    transition:none;
-  }
-  .chip.settled{ transition:transform 0.25s ease; }
-  .chip.used{ opacity:0.35; pointer-events:none; }
-
-  .feedback{
-    min-height:34px;
-    margin-top:20px;
-    font-size:18px;
-    font-weight:700;
-  }
-  .feedback.good{ color:var(--leaf); }
-  .feedback.bad{ color:var(--coral); }
-
-  .next-btn{
-    margin-top:16px;
-    display:none;
-    background:var(--coral);
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:14px 34px;
-    font-family:'Andika', sans-serif;
-    font-size:19px;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 4px 0 #D96A48;
-  }
-  .next-btn:active{ transform:translateY(3px); box-shadow:0 1px 0 #D96A48; }
-  .next-btn.show{ display:inline-block; }
-
-  #doneScreen{
-    display:none;
-    text-align:center;
-    margin-top:12vh;
-  }
-  #doneScreen h2{ font-size:26px; color:var(--leaf); }
-
-  /* invisible watermark — present in the DOM, not visible on screen */
-  .wm-sig{
-    position:absolute;
-    width:1px; height:1px;
-    padding:0; margin:-1px;
-    overflow:hidden;
-    clip:rect(0,0,0,0);
-    white-space:nowrap;
-    border:0;
-  }
-
-  /* ---- Level-up celebration ---- */
-  #levelUpOverlay{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(58,50,38,0.35);
-    z-index:200;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-  #levelUpOverlay.show{ display:flex; }
-  .levelup-card{
-    background:#fff;
-    border-radius:28px;
-    padding:38px 30px;
-    text-align:center;
-    box-shadow:0 12px 0 rgba(58,50,38,0.15);
-    border:3px solid #F0E6D2;
-    position:relative;
-    z-index:2;
-    max-width:340px;
-  }
-  .levelup-card h2{
-    font-size:26px;
-    color:var(--coral);
-    margin:0 0 6px;
-  }
-  .levelup-card p{
-    font-size:16px;
-    color:#8A7B5C;
-    margin:0 0 22px;
-  }
-  .levelup-continue{
-    background:var(--leaf);
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:14px 32px;
-    font-family:'Andika', sans-serif;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 4px 0 #5C9A4C;
-  }
-  .levelup-continue:active{ transform:translateY(3px); box-shadow:0 1px 0 #5C9A4C; }
-
-  .confetti-piece{
-    position:fixed;
-    top:-20px;
-    width:10px;
-    height:14px;
-    z-index:1;
-    opacity:0.95;
-    border-radius:2px;
-    animation-name:confetti-fall;
-    animation-timing-function:linear;
-    animation-fill-mode:forwards;
-  }
-  @keyframes confetti-fall{
-    0%{ transform:translateY(0) rotate(0deg); opacity:1; }
-    100%{ transform:translateY(110vh) rotate(540deg); opacity:0.9; }
-  }
-  .restart-btn{
-    margin-top:20px;
-    background:var(--sky);
-    color:#fff;
-    border:none;
-    border-radius:999px;
-    padding:14px 30px;
-    font-family:'Andika', sans-serif;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 4px 0 var(--sky-dark);
-  }
-
-  /* ---- Font-loading gate: hides content until Andika is actually ready,
-     so iOS/Android never briefly flash a fallback font's double-story a/g ---- */
-  #fontGate{
-    position:fixed;
-    inset:0;
-    background:var(--cream);
-    z-index:999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Andika', sans-serif;
-    font-size:17px;
-    color:var(--sky-dark);
-    font-weight:700;
-  }
-  #fontGate.hidden{ display:none; }
-  #appRoot{ visibility:hidden; }
-  #appRoot.ready{ visibility:visible; }
-
-  .fontcheck{
-    margin-top:26px;
-    font-size:14px;
-    color:#B3A688;
-  }
-</style>
+        /* invisible watermark — present in the DOM, not visible on screen */
+        .wm-sig{
+            position:absolute;
+            width:1px; height:1px;
+            padding:0; margin:-1px;
+            overflow:hidden;
+            clip:rect(0,0,0,0);
+            white-space:nowrap;
+            border:0;
+        }
+    </style>
 </head>
-<body>
-
-<div id="fontGate">Loading… 讀取中</div>
-
-<div id="appRoot">
-
+<body class="p-6 md:p-10">
 <span class="wm-sig" aria-hidden="true">© Joyce53306</span>
-
-<div id="startScreen">
-  <h1>🔤 Sight Words Sentences (Big)</h1>
-  <p>Choose your class to begin</p>
-  <button class="level-btn middle" data-level="middle">Middle Class 中班</button>
-  <button class="level-btn big" data-level="big">Big Class 大班</button>
+<div class="max-w-3xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col items-center mb-10 text-center">
+        <img src="Untitled design.png" alt="Joyce" class="avatar-img mb-4">
+        <h1 class="text-3xl font-black">Joyce's ABC Adventure</h1>
+    </div>
+    <!-- 1. Game Base -->
+    <h2 class="text-xl font-bold mb-4 uppercase">Game Base</h2>
+    <div class="joyce-strip-card">
+        <h3 class="font-bold text-xl mb-4 text-sky-700">Alphabet</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <a href="https://joyce53306.github.io/alphabet-match/" class="joyce-btn pink-special">✏️ Small Class</a>
+            <a href="https://joyce53306.github.io/alphabet-pair-match/" class="joyce-btn">✏️ Mid A</a>
+            <a href="https://joyce53306.github.io/phonics-hero/" class="joyce-btn">✏️ Mid B</a>
+            <a href="https://joyce53306.github.io/phonics-level-up/" class="joyce-btn big-class-special">✏️ Big Class</a>
+        </div>
+    </div>
+    <!-- 2. Voc Review -->
+    <div class="joyce-strip-card">
+        <h3 class="font-bold text-xl mb-4 text-sky-700">Voc Review</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <a href="https://joyce53306.github.io/david-k2-voc-review/" class="joyce-btn pink-special">
+                🎈 Mid Class Voc Review
+            </a>
+            <a href="https://joyce53306.github.io/david-k3-voc-review/" class="joyce-btn big-class-special">
+                🚀 Big Class Voc Review
+            </a>
+        </div>
+    </div>
+    <!-- 3. Phonics & Sight Words -->
+    <div class="joyce-strip-card">
+        <h3 class="font-bold text-xl mb-4 text-amber-700">Phonics & Sight Words</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <a href="https://joyce53306.github.io/mid-phonics-english/" class="joyce-btn">✏️ Short Vowels</a>
+            <a href="https://joyce53306.github.io/phonics-long-vowels/" class="joyce-btn">✏️ Long Vowels</a>
+            <a href="https://joyce53306.github.io/mid-sight-words/" class="joyce-btn">✏️ Sight Words (Mid)</a>
+            <a href="https://joyce53306.github.io/Review-sight-words/" class="joyce-btn big-class-special">✏️ Sight Words (Big)</a>
+            <a href="https://joyce53306.github.io/sight-word-fill-game/?level=big" class="joyce-btn big-class-special">🔤 BIG CLASS</a>
+        </div>
+    </div>
+    <!-- 4. David's Adventure -->
+    <div class="joyce-strip-card">
+        <h3 class="font-bold text-xl mb-4 text-emerald-700">David's Adventure</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <a href="https://joyce53306.github.io/Small-Class-Sentences-Practicess/" class="joyce-btn">✏️ Small Class</a>
+            <a href="https://joyce53306.github.io/mid-class-english/" class="joyce-btn pink-special">✏️ Mid Class</a>
+            <a href="https://joyce53306.github.io/big-class-english/" class="joyce-btn big-class-special">✏️ Big Class</a>
+        </div>
+    </div>
+    <!-- 5. Synonym & Antonym -->
+    <div class="joyce-strip-card">
+        <h3 class="font-bold text-xl mb-4 text-purple-700">Synonym & Antonym</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <a href="https://joyce53306.github.io/synonym-review/" class="joyce-btn">
+                🌸 Synonym Garden
+            </a>
+            <a href="https://joyce53306.github.io/antonym-review/" class="joyce-btn">
+                ⚖️ Antonym Balance
+            </a>
+        </div>
+    </div>
 </div>
-
-<div class="topbar" id="topbar">
-  <span class="title" id="levelLabel">Sight Words Sentences (Big)</span>
-  <span class="progress" id="progress">Question 1 / 1</span>
-</div>
-
-<div id="gameScreen">
-  <div class="card">
-    <button class="listen-btn" id="listenBtn" aria-label="Listen to the sentence">
-      <svg viewBox="0 0 24 24" fill="white"><path d="M3 10v4h4l5 5V5L7 10H3z"/><path d="M16.5 12a4.5 4.5 0 00-2.5-4.03v8.06A4.5 4.5 0 0016.5 12z"/></svg>
-      Listen
-    </button>
-
-    <div class="sentence" id="sentence"></div>
-
-    <div class="options" id="options"></div>
-
-    <div class="feedback" id="feedback"></div>
-    <button class="next-btn" id="nextBtn">Next question →</button>
-  </div>
-</div>
-
-<div id="doneScreen">
-  <h2>🎉 All done! Great job!</h2>
-  <button class="restart-btn" id="restartBtn">Choose class again</button>
-</div>
-
-<div id="levelUpOverlay">
-  <div class="levelup-card">
-    <h2 id="levelUpTitle">🎉 過關啦！</h2>
-    <p id="levelUpSubtitle">答對 5 題，太棒了！</p>
-    <button class="levelup-continue" id="levelUpContinue">繼續 Continue →</button>
-  </div>
-</div>
-
-<div class="fontcheck">Font check: Aa Gg Ll Qq</div>
-
-</div><!-- /#appRoot -->
-
 <script>
-(function(){
-  // ---- watermark / build signature (do not remove) ----
+  // watermark / build signature (do not remove)
   const BUILD_SIGNATURE = '© Joyce53306';
   document.documentElement.setAttribute('data-build', BUILD_SIGNATURE);
   console.log('%c' + BUILD_SIGNATURE, 'color:#3A93B0;font-weight:bold;');
-
-  // ---- Font gate: wait for Andika to actually be ready before showing
-  // any text, so iOS/Android never briefly render a/g/l/q in a fallback
-  // font's shape. Falls back to a 2.5s timeout if the Font Loading API
-  // is unavailable (older WebViews) so the app never gets stuck. ----
-  const fontGate = document.getElementById('fontGate');
-  const appRoot = document.getElementById('appRoot');
-
-  function revealApp(){
-    fontGate.classList.add('hidden');
-    appRoot.classList.add('ready');
-  }
-
-  if (document.fonts && document.fonts.load){
-    Promise.race([
-      Promise.all([
-        document.fonts.load('700 20px Andika'),
-        document.fonts.load('400 20px Andika')
-      ]),
-      new Promise(resolve => setTimeout(resolve, 2500))
-    ]).then(revealApp).catch(revealApp);
-  } else {
-    setTimeout(revealApp, 400);
-  }
-
-  const startScreen = document.getElementById('startScreen');
-  const gameScreen = document.getElementById('gameScreen');
-  const doneScreen = document.getElementById('doneScreen');
-  const topbar = document.getElementById('topbar');
-  const levelLabel = document.getElementById('levelLabel');
-  const progressEl = document.getElementById('progress');
-  const sentenceEl = document.getElementById('sentence');
-  const optionsEl = document.getElementById('options');
-  const feedback = document.getElementById('feedback');
-  const nextBtn = document.getElementById('nextBtn');
-  const listenBtn = document.getElementById('listenBtn');
-  const restartBtn = document.getElementById('restartBtn');
-  const levelUpOverlay = document.getElementById('levelUpOverlay');
-  const levelUpTitle = document.getElementById('levelUpTitle');
-  const levelUpSubtitle = document.getElementById('levelUpSubtitle');
-  const levelUpContinue = document.getElementById('levelUpContinue');
-
-  let questionBank = { middle: [], big: [] };
-  let queue = [];
-  let idx = 0;
-  let solved = false;
-  let currentAnswer = '';
-  let currentBefore = '';
-  let currentAfter = '';
-
-  fetch('questions.json').then(r => r.json()).then(data => {
-    questionBank = data;
-    // Deep-link support: ?level=big or ?level=middle jumps straight into
-    // that class (used by the hub's dedicated "BIG CLASS" card), skipping
-    // the choose-a-class screen.
-    const params = new URLSearchParams(window.location.search);
-    const requestedLevel = params.get('level');
-    if (requestedLevel === 'big' || requestedLevel === 'middle'){
-      startLevel(requestedLevel);
-    }
-  }).catch(() => {
-    feedback.textContent = 'Could not load questions.json (check it is in the same folder).';
-  });
-
-  document.querySelectorAll('.level-btn').forEach(btn => {
-    btn.addEventListener('click', () => startLevel(btn.dataset.level));
-  });
-
-  function shuffle(arr){
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--){
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
-  function startLevel(level){
-    queue = shuffle(questionBank[level] || []);
-    idx = 0;
-    hideLevelUp();
-    startScreen.style.display = 'none';
-    doneScreen.style.display = 'none';
-    topbar.style.display = 'flex';
-    gameScreen.style.display = 'flex';
-    levelLabel.textContent = level === 'middle' ? 'Middle Class 中班' : 'Big Class 大班';
-    loadQuestion();
-  }
-
-  function loadQuestion(){
-    if (idx >= queue.length){
-      gameScreen.style.display = 'none';
-      topbar.style.display = 'none';
-      doneScreen.style.display = 'block';
-      return;
-    }
-    const q = queue[idx];
-    solved = false;
-    currentAnswer = q.answer;
-    currentBefore = q.before;
-    currentAfter = q.after;
-    progressEl.textContent = 'Question ' + (idx + 1) + ' / ' + queue.length;
-    feedback.textContent = '';
-    feedback.className = 'feedback';
-    nextBtn.classList.remove('show');
-
-    sentenceEl.innerHTML = '';
-    if (q.before){
-      sentenceEl.appendChild(document.createTextNode(q.before + ' '));
-    }
-    const slot = document.createElement('span');
-    slot.className = 'slot';
-    slot.id = 'slot';
-    slot.textContent = q.answer;
-    sentenceEl.appendChild(slot);
-    if (q.after){
-      // No leading space when punctuation should attach directly to the
-      // blank (e.g. "No, I am not." / "Who's at the door?" / "better?").
-      const noSpaceLead = /^[,.?!']/.test(q.after);
-      sentenceEl.appendChild(document.createTextNode((noSpaceLead ? '' : ' ') + q.after));
-    }
-
-    optionsEl.innerHTML = '';
-    q.options.forEach(word => {
-      const chip = document.createElement('div');
-      chip.className = 'chip';
-      chip.dataset.word = word;
-      chip.textContent = word;
-      chip.addEventListener('pointerdown', onPointerDown);
-      optionsEl.appendChild(chip);
-    });
-
-    setTimeout(speakSentence, 350);
-  }
-
-  // Some written words need a different pronunciation than their spelling
-  // (e.g. "X'mas" is written that way but should be read as "Christmas").
-  // Displayed text on screen is never changed — only what gets spoken.
-  const PRONOUNCE_AS = [
-    { pattern: /x'?mas/gi, say: 'Christmas' }
-  ];
-  function toSpeechText(text){
-    let out = text;
-    PRONOUNCE_AS.forEach(rule => { out = out.replace(rule.pattern, rule.say); });
-    return out;
-  }
-
-  function speakSentence(){
-    if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const noSpaceLead = /^[,.?!']/.test(currentAfter || '');
-    const full = [currentBefore, currentAnswer].filter(Boolean).join(' ') +
-      (currentAfter ? (noSpaceLead ? '' : ' ') + currentAfter : '');
-    const u = new SpeechSynthesisUtterance(toSpeechText(full));
-    u.lang = 'en-US';
-    u.rate = 0.95;
-    window.speechSynthesis.speak(u);
-  }
-  listenBtn.addEventListener('click', speakSentence);
-
-  // ---- Drag and drop (pointer events) ----
-  let dragEl = null;
-  let startX = 0, startY = 0, origX = 0, origY = 0;
-
-  function getSlotRect(){ return document.getElementById('slot').getBoundingClientRect(); }
-
-  function onPointerDown(e){
-    if (solved) return;
-    const chip = e.currentTarget;
-    if (chip.classList.contains('used')) return;
-    dragEl = chip;
-    dragEl.setPointerCapture(e.pointerId);
-    dragEl.classList.add('dragging');
-    dragEl.classList.remove('settled');
-    const rect = dragEl.getBoundingClientRect();
-    origX = rect.left; origY = rect.top;
-    startX = e.clientX; startY = e.clientY;
-    dragEl.style.position = 'fixed';
-    dragEl.style.left = origX + 'px';
-    dragEl.style.top = origY + 'px';
-    dragEl.style.width = rect.width + 'px';
-  }
-
-  function onPointerMove(e){
-    if (!dragEl) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-    dragEl.style.left = (origX + dx) + 'px';
-    dragEl.style.top = (origY + dy) + 'px';
-
-    const chipRect = dragEl.getBoundingClientRect();
-    const cx = chipRect.left + chipRect.width/2;
-    const cy = chipRect.top + chipRect.height/2;
-    const sr = getSlotRect();
-    const over = cx > sr.left-10 && cx < sr.right+10 && cy > sr.top-10 && cy < sr.bottom+10;
-    document.getElementById('slot').classList.toggle('hover-target', over && !solved);
-  }
-
-  function resetChipPosition(chip){
-    chip.classList.add('settled');
-    chip.style.position = '';
-    chip.style.left = '';
-    chip.style.top = '';
-    chip.style.width = '';
-  }
-
-  function onPointerUp(e){
-    if (!dragEl) return;
-    const slot = document.getElementById('slot');
-    slot.classList.remove('hover-target');
-    const chipRect = dragEl.getBoundingClientRect();
-    const cx = chipRect.left + chipRect.width/2;
-    const cy = chipRect.top + chipRect.height/2;
-    const sr = slot.getBoundingClientRect();
-    const dropped = cx > sr.left-10 && cx < sr.right+10 && cy > sr.top-10 && cy < sr.bottom+10;
-
-    const chip = dragEl;
-    chip.classList.remove('dragging');
-    dragEl = null;
-
-    if (dropped){
-      handleDrop(chip);
-    } else {
-      resetChipPosition(chip);
-    }
-  }
-
-  function handleDrop(chip){
-    const slot = document.getElementById('slot');
-    const word = chip.dataset.word;
-    if (word.toLowerCase() === currentAnswer.toLowerCase()){
-      solved = true;
-      slot.classList.add('filled');
-      slot.style.color = 'var(--ink)';
-      chip.classList.add('used');
-      resetChipPosition(chip);
-      feedback.textContent = "🎉 Great job! That's right!";
-      feedback.className = 'feedback good';
-      nextBtn.classList.add('show');
-    } else {
-      resetChipPosition(chip);
-      slot.classList.add('wrong-flash');
-      feedback.textContent = 'Not quite — try again!';
-      feedback.className = 'feedback bad';
-      setTimeout(()=> slot.classList.remove('wrong-flash'), 350);
-    }
-  }
-
-  window.addEventListener('pointermove', onPointerMove);
-  window.addEventListener('pointerup', onPointerUp);
-
-  nextBtn.addEventListener('click', () => {
-    idx++;
-    const questionsPerStage = 5;
-    const justFinishedStage = idx > 0 && idx % questionsPerStage === 0 && idx < queue.length;
-    if (justFinishedStage){
-      showLevelUp(idx / questionsPerStage);
-    } else {
-      loadQuestion();
-    }
-  });
-
-  function showLevelUp(stageNumber){
-    levelUpTitle.textContent = '🎉 過關啦！Level ' + stageNumber + '!';
-    levelUpSubtitle.textContent = '答對 5 題，太棒了！Great job!';
-    levelUpOverlay.classList.add('show');
-    spawnConfetti();
-  }
-
-  function hideLevelUp(){
-    levelUpOverlay.classList.remove('show');
-    document.querySelectorAll('.confetti-piece').forEach(el => el.remove());
-  }
-
-  levelUpContinue.addEventListener('click', () => {
-    hideLevelUp();
-    loadQuestion();
-  });
-
-  function spawnConfetti(){
-    const colors = ['#FF8C69', '#5FB8D6', '#7CB86B', '#F4C542', '#C77DFF'];
-    const count = 60;
-    for (let i = 0; i < count; i++){
-      const piece = document.createElement('div');
-      piece.className = 'confetti-piece';
-      piece.style.left = Math.random() * 100 + 'vw';
-      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-      const duration = 2.2 + Math.random() * 1.4;
-      const delay = Math.random() * 0.6;
-      piece.style.animationDuration = duration + 's';
-      piece.style.animationDelay = delay + 's';
-      if (Math.random() > 0.5){
-        piece.style.borderRadius = '50%';
-      }
-      document.body.appendChild(piece);
-      setTimeout(() => piece.remove(), (duration + delay) * 1000 + 200);
-    }
-  }
-
-  restartBtn.addEventListener('click', () => {
-    doneScreen.style.display = 'none';
-    startScreen.style.display = 'block';
-  });
-
-})();
 </script>
-
 </body>
 </html>
