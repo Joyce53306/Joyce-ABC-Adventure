@@ -1,8 +1,16 @@
+<!--
+  Joyce's ABC Adventure — Game Hub
+  © Joyce53306
+  Unauthorized copying or redistribution without credit is not permitted.
+  Build signature: JOYCE53306-HUB-v1
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Joyce53306">
+    <meta name="copyright" content="© Joyce53306">
     <title>Joyce's ABC Adventure</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -22,9 +30,21 @@
         .big-class-special { border: 2px solid #f59e0b !important; background-color: #fffbeb !important; color: #92400e !important; }
         /* 粉紅色邊框標示 */
         .pink-special { border: 2px solid #ec4899 !important; background-color: #fdf2f8 !important; color: #9d174d !important; }
+
+        /* invisible watermark — present in the DOM, not visible on screen */
+        .wm-sig{
+            position:absolute;
+            width:1px; height:1px;
+            padding:0; margin:-1px;
+            overflow:hidden;
+            clip:rect(0,0,0,0);
+            white-space:nowrap;
+            border:0;
+        }
     </style>
 </head>
 <body class="p-6 md:p-10">
+<span class="wm-sig" aria-hidden="true">© Joyce53306</span>
 <div class="max-w-3xl mx-auto">
     <!-- Header -->
     <div class="flex flex-col items-center mb-10 text-center">
@@ -62,6 +82,7 @@
             <a href="https://joyce53306.github.io/phonics-long-vowels/" class="joyce-btn">✏️ Long Vowels</a>
             <a href="https://joyce53306.github.io/mid-sight-words/" class="joyce-btn">✏️ Sight Words (Mid)</a>
             <a href="https://joyce53306.github.io/Review-sight-words/" class="joyce-btn big-class-special">✏️ Sight Words (Big)</a>
+            <a href="https://joyce53306.github.io/sight-word-fill-game/?level=big" class="joyce-btn big-class-special">🔤 BIG CLASS</a>
         </div>
     </div>
     <!-- 4. David's Adventure -->
@@ -86,5 +107,11 @@
         </div>
     </div>
 </div>
+<script>
+  // watermark / build signature (do not remove)
+  const BUILD_SIGNATURE = '© Joyce53306';
+  document.documentElement.setAttribute('data-build', BUILD_SIGNATURE);
+  console.log('%c' + BUILD_SIGNATURE, 'color:#3A93B0;font-weight:bold;');
+</script>
 </body>
 </html>
